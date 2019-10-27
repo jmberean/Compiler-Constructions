@@ -1,0 +1,62 @@
+e Version 3.0
+Log file S4.berean.log
+
+Your name:          Berean John M
+Machinecode file:   S4.e        
+Check file:         S4.chk
+Check data:         8c7c 838 404 7904 0149
+
+=================== Sun Apr 07 17:36:20 2019 ==============r
+4107
+4107
+S1 test done
+2075
+2075
+1010
+1010
+20
+20
+10
+10
+15
+15
+S2 test done
+four lines follow
+one line
+one line
+third line
+fourth line
+7 = 7 = 7 = 7
+-14 = -14 = -14
+////Enter integer////
+123
+= 123
+S3 test done
+2 1 on separate lines
+2
+1
+0 = 0
+hello -3 up to hello -1
+hello -3
+hello -2
+hello -1
+bye 2 down to bye 1
+bye 2
+bye 1
+Next line should say "hello" with the quotes
+"hello"
+good = good
+Next line should say "bye" without the quotes
+bye
+"3 backslashes and a double quote \\\" within a string"
+S4 test done
+
+===========================================================r
+
+Report for:         Berean John M
+Program output:     correct
+Machine code size:  843    (5    OVER LIMIT ) <----- WARNING
+Machine inst count: 409    (5    OVER LIMIT ) <----- WARNING
+Execution time:     7954   (50   OVER LIMIT ) <----- WARNING
+
+================ r(aabb) terminated Sun Apr 07 17:36:20 2019

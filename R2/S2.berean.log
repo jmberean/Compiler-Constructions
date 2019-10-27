@@ -1,0 +1,31 @@
+e Version 3.0
+Log file S2.berean.log
+
+Your name:          Berean John M
+Machinecode file:   S2.e        
+Check file:         S2.chk
+Check data:         9f11 136 108 5249 ba04
+
+=================== Sat Apr 20 17:26:00 2019 ==============r
+4107
+4107
+2075
+2075
+1010
+1010
+20
+20
+10
+10
+15
+15
+
+===========================================================r
+
+Report for:         Berean John M
+Program output:     correct
+Machine code size:  154    (18   OVER LIMIT ) <----- WARNING
+Machine inst count: 119    (11   OVER LIMIT ) <----- WARNING
+Execution time:     5234   (15   under limit)
+
+================ r(e19f) terminated Sat Apr 20 17:26:00 2019

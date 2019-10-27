@@ -1,0 +1,200 @@
+a Assembler Version 1.7    Sat Apr 20 17:25:57 2019
+
+  LOC   MACHINE      ASSEMBLY
+hex*dec  CODE          CODE
+
+               ; from R2 compiler written by ...
+                         !register
+               ;    x = +3 + -2 + 1;
+0  *0    0078            ld        @3
+1  *1    2079            add       @_2
+2  *2    107A            st        @t0
+3  *3    007A            ld        @t0
+4  *4    207B            add       @1
+5  *5    107C            st        @t1
+6  *6    007C            ld        @t1
+7  *7    1077            st        x
+               ;    y = x;
+8  *8    0077            ld        x
+9  *9    107D            st        y
+               ;    z = x*(2 + y) + (((4099)));
+A  *10   007F            ld        @2
+B  *11   207D            add       y
+C  *12   1080            st        @t2
+D  *13   0077            ld        x
+E  *14   4080            mult      @t2
+F  *15   1081            st        @t3
+10 *16   0081            ld        @t3
+11 *17   2082            add       @4099
+12 *18   1083            st        @t4
+13 *19   0083            ld        @t4
+14 *20   107E            st        z
+               ;    println(z + x + -2);
+15 *21   007E            ld        z
+16 *22   2077            add       x
+17 *23   1084            st        @t5
+18 *24   0084            ld        @t5
+19 *25   2079            add       @_2
+1A *26   1085            st        @t6
+1B *27   0085            ld        @t6
+1C *28   FFFD            dout
+1D *29   600A            ldc       '\n'
+1E *30   FFFB            aout
+               ;    println(4107);
+1F *31   0086            ld        @4107
+20 *32   FFFD            dout
+21 *33   600A            ldc       '\n'
+22 *34   FFFB            aout
+               ; // end of S1 test
+               ; //==========================================================
+               ; // Add support for subtraction, division, null statement, 
+               ; // compound statement, print statement, and single-line
+               ; // comments.
+               ;    println((z - (x - 50)   // comment in middle of statement
+23 *35   0077            ld        x
+24 *36   3087            sub       @50
+25 *37   1088            st        @t7
+               ;         ) / 2 - x);
+26 *38   007E            ld        z
+27 *39   3088            sub       @t7
+28 *40   1089            st        @t8
+29 *41   0089            ld        @t8
+2A *42   507F            div       @2
+2B *43   108A            st        @t9
+2C *44   008A            ld        @t9
+2D *45   3077            sub       x
+2E *46   108B            st        @t10
+2F *47   008B            ld        @t10
+30 *48   FFFD            dout
+31 *49   600A            ldc       '\n'
+32 *50   FFFB            aout
+               ;    println(2075);
+33 *51   008C            ld        @2075
+34 *52   FFFD            dout
+35 *53   600A            ldc       '\n'
+36 *54   FFFB            aout
+               ;    ;                       // null statement 
+               ;    {{;                     // compound statement
+               ;       {
+               ;       x = 10;  
+37 *55   008D            ld        @10
+38 *56   1077            st        x
+               ;       ;
+               ;       y = 20;
+39 *57   008E            ld        @20
+3A *58   107D            st        y
+               ;    }};}
+               ;    {}
+               ;    print(x);
+3B *59   0077            ld        x
+3C *60   FFFD            dout
+               ;    println(x);
+3D *61   0077            ld        x
+3E *62   FFFD            dout
+3F *63   600A            ldc       '\n'
+40 *64   FFFB            aout
+               ;    println(1010);
+41 *65   008F            ld        @1010
+42 *66   FFFD            dout
+43 *67   600A            ldc       '\n'
+44 *68   FFFB            aout
+               ;    println(y);
+45 *69   007D            ld        y
+46 *70   FFFD            dout
+47 *71   600A            ldc       '\n'
+48 *72   FFFB            aout
+               ;    println(20);
+49 *73   008E            ld        @20
+4A *74   FFFD            dout
+4B *75   600A            ldc       '\n'
+4C *76   FFFB            aout
+               ;    x = 1 + (2 + (3+ 4));
+4D *77   0078            ld        @3
+4E *78   2090            add       @4
+4F *79   1091            st        @t11
+50 *80   007F            ld        @2
+51 *81   2091            add       @t11
+52 *82   1092            st        @t12
+53 *83   007B            ld        @1
+54 *84   2092            add       @t12
+55 *85   1093            st        @t13
+56 *86   0093            ld        @t13
+57 *87   1077            st        x
+               ;    println(x);
+58 *88   0077            ld        x
+59 *89   FFFD            dout
+5A *90   600A            ldc       '\n'
+5B *91   FFFB            aout
+               ;    println(10);
+5C *92   008D            ld        @10
+5D *93   FFFD            dout
+5E *94   600A            ldc       '\n'
+5F *95   FFFB            aout
+               ;    x = 1 + 2 + 3 + 4 + 5;
+60 *96   007B            ld        @1
+61 *97   207F            add       @2
+62 *98   1094            st        @t14
+63 *99   0094            ld        @t14
+64 *100  2078            add       @3
+65 *101  1095            st        @t15
+66 *102  0095            ld        @t15
+67 *103  2090            add       @4
+68 *104  1096            st        @t16
+69 *105  0096            ld        @t16
+6A *106  2097            add       @5
+6B *107  1098            st        @t17
+6C *108  0098            ld        @t17
+6D *109  1077            st        x
+               ;    println(x);
+6E *110  0077            ld        x
+6F *111  FFFD            dout
+70 *112  600A            ldc       '\n'
+71 *113  FFFB            aout
+               ;    println(15);
+72 *114  0099            ld        @15
+73 *115  FFFD            dout
+74 *116  600A            ldc       '\n'
+75 *117  FFFB            aout
+               ; // end of S2 test
+               
+76 *118  FFFF            halt
+77 *119  0000  x:        dw         0
+78 *120  0003  @3:       dw         3
+79 *121  FFFE  @_2:      dw         -2
+7A *122  0000  @t0:      dw         0
+7B *123  0001  @1:       dw         1
+7C *124  0000  @t1:      dw         0
+7D *125  0000  y:        dw         0
+7E *126  0000  z:        dw         0
+7F *127  0002  @2:       dw         2
+80 *128  0000  @t2:      dw         0
+81 *129  0000  @t3:      dw         0
+82 *130  1003  @4099:    dw         4099
+83 *131  0000  @t4:      dw         0
+84 *132  0000  @t5:      dw         0
+85 *133  0000  @t6:      dw         0
+86 *134  100B  @4107:    dw         4107
+87 *135  0032  @50:      dw         50
+88 *136  0000  @t7:      dw         0
+89 *137  0000  @t8:      dw         0
+8A *138  0000  @t9:      dw         0
+8B *139  0000  @t10:     dw         0
+8C *140  081B  @2075:    dw         2075
+8D *141  000A  @10:      dw         10
+8E *142  0014  @20:      dw         20
+8F *143  03F2  @1010:    dw         1010
+90 *144  0004  @4:       dw         4
+91 *145  0000  @t11:     dw         0
+92 *146  0000  @t12:     dw         0
+93 *147  0000  @t13:     dw         0
+94 *148  0000  @t14:     dw         0
+95 *149  0000  @t15:     dw         0
+96 *150  0000  @t16:     dw         0
+97 *151  0005  @5:       dw         5
+98 *152  0000  @t17:     dw         0
+99 *153  000F  @15:      dw         15
+9A *154  ========= end of S2.a =============================
+
+asm in  = S2.a
+asm out = S2.e
+asm lst = S2.lst 
